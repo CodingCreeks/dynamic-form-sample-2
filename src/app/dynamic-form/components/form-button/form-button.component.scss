@@ -1,7 +1,7 @@
 button {
   letter-spacing: -0.5px;
   cursor: pointer;
-  background-color: #9d62c8;
+  background-color:lightseagreen;
   outline: 0;
   line-height: 1;
   text-align: center;
@@ -15,7 +15,7 @@ button {
   transition: background-color .3s, box-shadow .3s;
 
   &:hover {
-    background-color: #a46dcc;
+    background-color:lightslategray;
     box-shadow: 0 3px 8px rgba(0, 0, 0, 0.2);
   }
 
