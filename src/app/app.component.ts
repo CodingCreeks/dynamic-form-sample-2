@@ -35,6 +35,8 @@ export class AppComponent implements AfterViewInit {
     }
   ];
 
+  data = { name: "John", food: "Coffee" };
+
   ngAfterViewInit() {
     let previousValid = this.form.valid;
     // this.form.changes.subscribe(() => {
@@ -48,7 +50,7 @@ export class AppComponent implements AfterViewInit {
     // this.form.setValue('name', 'Todd Motto');
   }
 
-  submit(value: {[name: string]: any}) {
+  submit(value: { [name: string]: any }) {
     console.log(value);
   }
 }

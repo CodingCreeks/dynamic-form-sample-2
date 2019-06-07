@@ -30,6 +30,7 @@ export class DynamicFormComponent implements OnChanges, OnInit {
 
   ngOnInit() {
     this.form = this.createGroup();
+    this.form.patchValue(this.data);
   }
 
   ngOnChanges() {
