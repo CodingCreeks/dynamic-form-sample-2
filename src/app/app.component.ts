@@ -7,18 +7,7 @@ import { DynamicFormComponent } from './dynamic-form/containers/dynamic-form/dyn
 @Component({
   selector: 'app-root',
   styleUrls: ['app.component.scss'],
-  template: `
-    <div class="app">
-      <dynamic-form
-        [config]="config"
-        [data]="data"
-        #form="dynamicForm"
-        (submit)="submit($event)">
-      </dynamic-form>
-      {{ form.valid }}
-      {{ form.value | json }}
-    </div>
-  `
+  templateUrl: `app.component.html`
 })
 export class AppComponent implements AfterViewInit {
   @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
