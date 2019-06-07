@@ -34,22 +34,22 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   }
 
   ngOnChanges() {
-    if (this.form) {
-      const controls = Object.keys(this.form.controls);
-      const configControls = this.controls.map((item) => item.name);
+    // if (this.form) {
+    //   const controls = Object.keys(this.form.controls);
+    //   const configControls = this.controls.map((item) => item.name);
 
-      controls
-        .filter((control) => !configControls.includes(control))
-        .forEach((control) => this.form.removeControl(control));
+    //   controls
+    //     .filter((control) => !configControls.includes(control))
+    //     .forEach((control) => this.form.removeControl(control));
 
-      configControls
-        .filter((control) => !controls.includes(control))
-        .forEach((name) => {
-          const config = this.config.find((control) => control.name === name);
-          this.form.addControl(name, this.createControl(config));
-        });
+    //   configControls
+    //     .filter((control) => !controls.includes(control))
+    //     .forEach((name) => {
+    //       const config = this.config.find((control) => control.name === name);
+    //       this.form.addControl(name, this.createControl(config));
+    //     });
 
-    }
+    // }
   }
 
   createGroup() {
