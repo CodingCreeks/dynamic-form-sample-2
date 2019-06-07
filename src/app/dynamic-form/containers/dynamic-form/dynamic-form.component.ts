@@ -1,41 +1,32 @@
-import {Component, EventEmitter, Input, OnChanges, OnInit, Output} from '@angular/core';
-import {FormGroup, FormBuilder} from '@angular/forms';
+import { Component, EventEmitter, Input, OnChanges, OnInit, Output } from '@angular/core';
+import { FormGroup, FormBuilder } from '@angular/forms';
 
-import {FieldConfig} from '../../models/field-config.interface';
+import { FieldConfig } from '../../models/field-config.interface';
 
 @Component({
   exportAs: 'dynamicForm',
   selector: 'dynamic-form',
   styleUrls: ['dynamic-form.component.scss'],
-  template: `
-    <form
-      class="dynamic-form"
-      [formGroup]="form"
-      (submit)="handleSubmit($event)">
-      <ng-container
-        *ngFor="let field of config;"
-        dynamicField
-        [config]="field"
-        [group]="form">
-      </ng-container>
-    </form>
-  `
+  templateUrl: 'dynamic-form.component.html'
 })
 export class DynamicFormComponent implements OnChanges, OnInit {
   @Input()
   config: FieldConfig[] = [];
+
+  @Input()
+  data: any;
 
   @Output()
   submit: EventEmitter<any> = new EventEmitter<any>();
 
   form: FormGroup;
 
-  get controls() {return this.config.filter(({type}) => type !== 'button');}
-  get changes() {return this.form.valueChanges;}
-  get valid() {return this.form.valid;}
-  get value() {return this.form.value;}
+  get controls() { return this.config.filter(({ type }) => type !== 'button'); }
+  get changes() { return this.form.valueChanges; }
+  get valid() { return this.form.valid; }
+  get value() { return this.form.value; }
 
-  constructor(private fb: FormBuilder) {}
+  constructor(private fb: FormBuilder) { }
 
   ngOnInit() {
     this.form = this.createGroup();
@@ -67,8 +58,8 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   }
 
   createControl(config: FieldConfig) {
-    const {disabled, validation, value} = config;
-    const control = this.fb.control({disabled, value}, validation);
+    const { disabled, validation, value } = config;
+    const control = this.fb.control({ disabled, value }, validation);
     control.patchValue(null);// Need to add the data source
     return control;
   }
@@ -95,6 +86,6 @@ export class DynamicFormComponent implements OnChanges, OnInit {
   }
 
   setValue(name: string, value: any) {
-    this.form.controls[name].setValue(value, {emitEvent: true});
+    this.form.controls[name].setValue(value, { emitEvent: true });
   }
 }

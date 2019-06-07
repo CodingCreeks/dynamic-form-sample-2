@@ -11,6 +11,7 @@ import { DynamicFormComponent } from './dynamic-form/containers/dynamic-form/dyn
     <div class="app">
       <dynamic-form
         [config]="config"
+        [data]="data"
         #form="dynamicForm"
         (submit)="submit($event)">
       </dynamic-form>
@@ -47,15 +48,15 @@ export class AppComponent implements AfterViewInit {
 
   ngAfterViewInit() {
     let previousValid = this.form.valid;
-    this.form.changes.subscribe(() => {
-      if (this.form.valid !== previousValid) {
-        previousValid = this.form.valid;
-        this.form.setDisabled('submit', !previousValid);
-      }
-    });
+    // this.form.changes.subscribe(() => {
+    //   if (this.form.valid !== previousValid) {
+    //     previousValid = this.form.valid;
+    //     this.form.setDisabled('submit', !previousValid);
+    //   }
+    // });
 
-    this.form.setDisabled('submit', true);
-    this.form.setValue('name', 'Todd Motto');
+    // this.form.setDisabled('submit', true);
+    // this.form.setValue('name', 'Todd Motto');
   }
 
   submit(value: {[name: string]: any}) {

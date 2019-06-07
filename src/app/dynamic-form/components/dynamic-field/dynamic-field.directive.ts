@@ -8,7 +8,7 @@ import { FormSelectComponent } from '../form-select/form-select.component';
 import { Field } from '../../models/field.interface';
 import { FieldConfig } from '../../models/field-config.interface';
 
-const components: {[type: string]: Type<Field>} = {
+const components: { [type: string]: Type<Field> } = {
   button: FormButtonComponent,
   input: FormInputComponent,
   select: FormSelectComponent
@@ -24,17 +24,21 @@ export class DynamicFieldDirective implements Field, OnChanges, OnInit {
   @Input()
   group: FormGroup;
 
+  @Input()
+  data: any;
+
   component: ComponentRef<Field>;
 
   constructor(
     private resolver: ComponentFactoryResolver,
     private container: ViewContainerRef
-  ) {}
+  ) { }
 
   ngOnChanges() {
     if (this.component) {
       this.component.instance.config = this.config;
       this.component.instance.group = this.group;
+      this.component.instance.data = this.data;
     }
   }
 
@@ -50,5 +54,6 @@ export class DynamicFieldDirective implements Field, OnChanges, OnInit {
     this.component = this.container.createComponent(component);
     this.component.instance.config = this.config;
     this.component.instance.group = this.group;
+    this.component.instance.data = this.data;
   }
 }
