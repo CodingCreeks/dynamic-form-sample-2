@@ -29,4 +29,4 @@ import { FormSelectComponent } from './components/form-select/form-select.compon
     FormSelectComponent
   ]
 })
-export class DynamicFormModule {}
+export class DynamicFormModule { }
