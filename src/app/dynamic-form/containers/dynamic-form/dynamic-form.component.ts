@@ -6,7 +6,7 @@ import {FieldConfig} from '../../models/field-config.interface';
 @Component({
   exportAs: 'dynamicForm',
   selector: 'dynamic-form',
-  styleUrls: ['dynamic-form.component.css'],
+  styleUrls: ['dynamic-form.component.scss'],
   template: `
     <form
       class="dynamic-form"
