@@ -10,14 +10,21 @@ import { DynamicFormComponent } from './dynamic-form/containers/dynamic-form/dyn
   templateUrl: `app.component.html`
 })
 export class AppComponent implements AfterViewInit {
-  @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
+  // @ViewChild(DynamicFormComponent) form: DynamicFormComponent;
 
   config: FieldConfig[] = [
     {
       type: 'input',
-      label: 'Full name',
-      name: 'name',
-      placeholder: 'Enter your name',
+      label: 'First name',
+      name: 'firstName',
+      placeholder: 'Enter your first name',
+      validation: [Validators.required, Validators.minLength(4)]
+    },
+    {
+      type: 'input',
+      label: 'Last Name',
+      name: 'lastName',
+      placeholder: 'Enter your last name',
       validation: [Validators.required, Validators.minLength(4)]
     },
     {
@@ -35,10 +42,10 @@ export class AppComponent implements AfterViewInit {
     }
   ];
 
-  data = { name: "John", food: "Coffee" };
+  data = { firstName: "John",lastName:"Doe", food: "Pizza" };
 
   ngAfterViewInit() {
-    let previousValid = this.form.valid;
+    // let previousValid = this.form.valid;
     // this.form.changes.subscribe(() => {
     //   if (this.form.valid !== previousValid) {
     //     previousValid = this.form.valid;
